@@ -603,72 +603,6 @@
                 </span>
             </button>
         </div>
-
-        <!-- Data Section -->
-        <div id="data-section" class="hidden">
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-2">
-                <!-- Steps Card -->
-                <div class="bg-white p-3 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-8 h-8 bg-[#4c63ce]/10 rounded-full flex items-center justify-center mb-2">
-                        <i class="fas fa-shoe-prints text-[#4c63ce] text-base"></i>
-                    </div>
-                    <h3 class="text-xs sm:text-sm font-semibold mb-1">Daily Steps</h3>
-                    <p id="steps-count" class="text-lg sm:text-xl font-bold text-[#4c63ce]">--</p>
-                    <p class="text-gray-500 text-xs">steps today</p>
-                </div>
-
-                <!-- Heart Rate Card -->
-                <div class="bg-white p-3 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-8 h-8 bg-[#4c63ce]/10 rounded-full flex items-center justify-center mb-2">
-                        <i class="fas fa-heartbeat text-[#4c63ce] text-base"></i>
-                    </div>
-                    <h3 class="text-xs sm:text-sm font-semibold mb-1">Heart Points</h3>
-                    <p id="heart-rate" class="text-lg sm:text-xl font-bold text-[#4c63ce]">--</p>
-                    <p class="text-gray-500 text-xs">Points</p>
-                </div>
-
-                <!-- Calories Card - Moved to center for mobile -->
-                <div class="bg-white p-3 rounded-xl shadow-sm hover:shadow-md transition-shadow sm:col-start-auto col-start-1 col-span-2 sm:col-span-1">
-                    <div class="w-8 h-8 bg-[#4c63ce]/10 rounded-full flex items-center justify-center mb-2">
-                        <i class="fas fa-fire text-[#4c63ce] text-base"></i>
-                    </div>
-                    <h3 class="text-xs sm:text-sm font-semibold mb-1">Calories</h3>
-                    <p id="calories-burned" class="text-lg sm:text-xl font-bold text-[#4c63ce]">--</p>
-                    <p class="text-gray-500 text-xs">kcal today</p>
-                </div>
-
-                <!-- Distance -->
-                <div class="bg-white p-3 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-8 h-8 bg-[#4c63ce]/10 rounded-full flex items-center justify-center mb-2">
-                        <i class="fas fa-route text-[#4c63ce] text-base"></i>
-                    </div>
-                    <h3 class="text-xs sm:text-sm font-semibold mb-1">Distance</h3>
-                    <p id="distance-traveled" class="text-lg sm:text-xl font-bold text-[#4c63ce]">--</p>
-                    <p class="text-gray-500 text-xs">km</p>
-                </div>
-
-                <!-- Move Minutes -->
-                <div class="bg-white p-3 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-8 h-8 bg-[#4c63ce]/10 rounded-full flex items-center justify-center mb-2">
-                        <i class="fas fa-walking text-[#4c63ce] text-base"></i>
-                    </div>
-                    <h3 class="text-xs sm:text-sm font-semibold mb-1">Move Time</h3>
-                    <p id="move-minutes" class="text-lg sm:text-xl font-bold text-[#4c63ce]">--</p>
-                    <p class="text-gray-500 text-xs">min</p>
-                </div>
-            </div>
-
-            <!-- Refresh Button -->
-            <div class="text-center mt-4">
-                <button 
-                    id="refresh-button"
-                    onclick="fetchFitnessData()"
-                    class="bg-[#4c63ce] text-white px-3 py-1.5 rounded-full hover:bg-[#3b4fa3] transition-colors inline-flex items-center gap-2 text-xs sm:text-sm">
-                    <i class="fas fa-sync-alt"></i>
-                    Refresh Data
-                </button>
-            </div>
-        </div>
     </div>
     </section>
     <!-- Health Data Section end -->
@@ -721,8 +655,8 @@
                             </button>
                         </div>
                         <div class="flex items-center gap-2">
-                            <p class="text-gray-600">+919608606073</p>
-                            <button onclick="copyToClipboard(this, '+919608606073')" class="text-[#4c63ce] hover:text-[#3b4fa3]">
+                            <p class="text-gray-600">+9169696969</p>
+                            <button onclick="copyToClipboard(this, '+9169696969')" class="text-[#4c63ce] hover:text-[#3b4fa3]">
                             <i class="fa-regular fa-clipboard"></i>
                             </button>
                         </div>

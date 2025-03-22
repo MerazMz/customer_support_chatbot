@@ -190,22 +190,6 @@
             passwordError.classList.add('hidden');
             return true;
         }
-
-        function signInWithGoogle() {
-            const provider = new firebase.auth.GoogleAuthProvider();
-            firebase.auth().signInWithPopup(provider)
-                .then((result) => {
-                    // Handle successful sign-in
-                    console.log('Google sign-in successful:', result.user);
-                    // Redirect or update UI as needed
-                    // window.location.href = 'dashboard.html';
-                })
-                .catch((error) => {
-                    // Handle errors
-                    console.error('Google sign-in error:', error);
-                    alert('Failed to sign in with Google: ' + error.message);
-                });
-        }
     </script>
 </body>
 </html> 

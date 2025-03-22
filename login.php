@@ -9,23 +9,6 @@
     <title>Login Page</title>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
-    <script>
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAhQJW7tf8yPosLy8WdBGqpU32nnJjcoSs",
-            authDomain: "myloginapp-54184.firebaseapp.com",
-            projectId: "myloginapp-54184",
-            storageBucket: "myloginapp-54184.firebasestorage.app",
-            messagingSenderId: "49614754222",
-            appId: "1:49614754222:web:2c9753336289a1d0fcb83f",
-            measurementId: "G-LDPZSP1K8Y"
-        };
-
-        // Initialize Firebase
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
-        }
-    </script>
 </head>
 <body class="overflow-hidden">
     <div class="bg-gradient-to-r from-blue-100 to-purple-100 min-h-screen flex items-center justify-center">

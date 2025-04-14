@@ -758,35 +758,35 @@
             </div>
 
                 <!-- Contact Form -->
-                <div class="lg:col-span-2 bg-white rounded-xl shadow-sm p-8">
-                    <form action="contact_process.php" method="POST" class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
+                <div class="lg:col-span-2 bg-white rounded-xl shadow-sm p-4 sm:p-8">
+                    <form action="contact_process.php" method="POST" class="space-y-4 sm:space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
                                 <input type="text" id="name" name="name" required
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c63ce] focus:border-transparent outline-none transition-all">
+                                    class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c63ce] focus:border-transparent outline-none transition-all text-sm sm:text-base">
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
                                 <input type="email" id="email" name="email" required
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c63ce] focus:border-transparent outline-none transition-all">
+                                    class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c63ce] focus:border-transparent outline-none transition-all text-sm sm:text-base">
                             </div>
                         </div>
 
                         <div>
                             <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
                             <input type="text" id="subject" name="subject" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c63ce] focus:border-transparent outline-none transition-all">
+                                class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c63ce] focus:border-transparent outline-none transition-all text-sm sm:text-base">
                         </div>
 
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
                             <textarea id="message" name="message" rows="4" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c63ce] focus:border-transparent outline-none transition-all"></textarea>
+                                class="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4c63ce] focus:border-transparent outline-none transition-all text-sm sm:text-base"></textarea>
                         </div>
 
                         <button type="submit"
-                            class="w-full bg-[#4c63ce] text-white font-medium px-6 py-3 rounded-lg hover:bg-[#3b4fa3] transition-colors flex items-center justify-center gap-2">
+                            class="w-full bg-[#4c63ce] text-white font-medium px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:bg-[#3b4fa3] transition-colors flex items-center justify-center gap-2 text-sm sm:text-base">
                             <span>Send Message</span>
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -795,11 +795,12 @@
             </div>
 
             <!-- Map Section -->
-            <div class="mt-12 rounded-xl overflow-hidden shadow-sm ml-20 mr-20">
+            <div class="mt-8 sm:mt-12 rounded-xl overflow-hidden shadow-sm mx-4 sm:mx-20">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3406.9612243126247!2d75.70336037601191!3d31.37728905426814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5a594d22b88d%3A0x4cc934c58d0992ec!2sLovely%20Professional%20University!5e0!3m2!1sen!2sin!4v1707634171317!5m2!1sen!2sin"
                     width="100%" 
-                    height="450" 
+                    height="300"
+                    class="sm:h-[450px]" 
                     style="border:0;" 
                     allowfullscreen="" 
                     loading="lazy">
@@ -812,20 +813,20 @@
     <?php include 'footer.php'; ?>
     
     <!-- Chatbot Icon and Chat Box -->
-    <div class="fixed bottom-6 right-6 z-50 flex items-end gap-4 ">
+    <div class="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex items-end gap-2 sm:gap-4">
         <!-- Ask Medibot Text -->
-        <div id="medibot-text" class="bg-white rounded-lg px-4 py-2 shadow-lg animate-bounce mb-2">
-            <p class="text-[#4c63ce] font-medium">Ask Medibot!</p>
+        <div id="medibot-text" class="bg-white rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 shadow-lg animate-bounce mb-2">
+            <p class="text-[#4c63ce] font-medium text-sm sm:text-base">Ask Medibot!</p>
         </div>
 
         <!-- Chat Box -->
         <div class="relative">
-            <div id="chat-box" class="hidden opacity-0 bg-white rounded-lg shadow-xl w-[350px] h-[500px] absolute bottom-20 right-0 mb-2 overflow-hidden transition-opacity duration-300 ease-in-out">
+            <div id="chat-box" class="hidden opacity-0 bg-white rounded-lg shadow-xl w-[90vw] sm:w-[350px] h-[80vh] sm:h-[500px] absolute bottom-20 right-0 mb-2 overflow-hidden transition-opacity duration-300 ease-in-out">
                 <!-- Chat Header -->
-                <div class="bg-[#4c63ce] text-white p-4 flex justify-between items-center">
+                <div class="bg-[#4c63ce] text-white p-3 sm:p-4 flex justify-between items-center">
                     <div class="flex items-center">
                         <i class="fa-regular fa-robot mr-2"></i>
-                        <span class="font-medium">MEDI BOT</span>
+                        <span class="font-medium text-sm sm:text-base">MEDI BOT</span>
                     </div>
                     <div class="flex items-center gap-3">
                         <button onclick="toggleChat()" class="hover:text-gray-200">
@@ -835,13 +836,13 @@
                 </div>
                 
                 <!-- Chat Messages -->
-                <div id="chat-messages" class="p-4 h-[380px] overflow-y-auto">
+                <div id="chat-messages" class="p-3 sm:p-4 h-[calc(80vh-120px)] sm:h-[380px] overflow-y-auto">
                     <div class="mb-4">
-                        <div class="bg-gray-100 rounded-lg p-3 max-w-[80%] relative group">
-                            <p>Hello I am Medi Bot! How can I assist you today?</p>
+                        <div class="bg-gray-100 rounded-lg p-2.5 sm:p-3 max-w-[80%] relative group">
+                            <p class="text-sm sm:text-base">Hello I am Medi Bot! How can I assist you today?</p>
                             <button onclick="speakMessage(this.parentElement.querySelector('p').textContent)" 
                                 class="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[#4c63ce] hover:text-[#3b4fa3] p-1 rounded-full hover:bg-gray-100">
-                                <i class="fas fa-volume-up"></i>
+                                <i class="fas fa-volume-up text-sm sm:text-base"></i>
                             </button>
                         </div>
                     </div>
@@ -851,20 +852,20 @@
                 <div class="border-t p-2">
                     <div class="flex items-center gap-2">
                         <input type="text" id="chat-input" placeholder="Type your message..." 
-                            class="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:border-[#4c63ce]" autocomplete="off">
-                        <button onclick="startVoiceInput()" class="bg-[#4c63ce] text-white p-2 rounded-full hover:bg-[#3b4fa3] w-10 h-10 flex items-center justify-center">
-                            <i class="fas fa-microphone"></i>
+                            class="flex-1 border rounded-full px-3 sm:px-4 py-1.5 sm:py-2 focus:outline-none focus:border-[#4c63ce] text-sm sm:text-base" autocomplete="off">
+                        <button onclick="startVoiceInput()" class="bg-[#4c63ce] text-white p-1.5 sm:p-2 rounded-full hover:bg-[#3b4fa3] w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
+                            <i class="fas fa-microphone text-sm sm:text-base"></i>
                         </button>
-                        <button onclick="sendMessage()" class="bg-[#4c63ce] text-white p-2 rounded-full hover:bg-[#3b4fa3] w-10 h-10 flex items-center justify-center">
-                            <i class="fas fa-paper-plane"></i>
+                        <button onclick="sendMessage()" class="bg-[#4c63ce] text-white p-1.5 sm:p-2 rounded-full hover:bg-[#3b4fa3] w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
+                            <i class="fas fa-paper-plane text-sm sm:text-base"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
             <!-- Chatbot Icon Button -->
-            <button onclick="toggleChat(); document.getElementById('medibot-text').style.display='none';" class="bg-[#4c63ce] text-white p-4 rounded-full hover:bg-[#3b4fa3] transition-all duration-300 shadow-lg" id="chat-button">
-                <i class="fa-solid fa-comments text-2xl transition-transform duration-300"></i>
+            <button onclick="toggleChat(); document.getElementById('medibot-text').style.display='none';" class="bg-[#4c63ce] text-white p-3 sm:p-4 rounded-full hover:bg-[#3b4fa3] transition-all duration-300 shadow-lg" id="chat-button">
+                <i class="fa-solid fa-comments text-xl sm:text-2xl transition-transform duration-300"></i>
             </button>
         </div>
     </div>

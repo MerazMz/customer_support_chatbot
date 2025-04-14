@@ -3,6 +3,7 @@ from flask_cors import CORS
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
+import base64
 
 app = Flask(__name__)
 CORS(app)
@@ -17,7 +18,8 @@ if not api_key:
 
 # Configure Gemini API
 genai.configure(api_key=api_key)
-model = genai.GenerativeModel('gemini-2.0-flash')
+# Use gemini-1.5-pro instead of gemini-2.0-flash for multimodal capabilities
+model = genai.GenerativeModel('gemini-1.5-pro')
 
 # Initialize chat sessions storage
 chat_sessions = {}
@@ -36,20 +38,21 @@ You should:
 def chat():
     try:
         data = request.json
-        user_message = data.get('message')
+        user_message = data.get('message', '')
         session_id = data.get('session_id', 'default')
+        image_data = data.get('image', None)
         
-        if not user_message:
-            return jsonify({'error': 'No message provided'}), 400
+        if not user_message and not image_data:
+            return jsonify({'error': 'No message or image provided'}), 400
             
-        response = chat_with_gemini(user_message, session_id)
+        response = chat_with_gemini(user_message, session_id, image_data)
         return jsonify({'response': response})
         
     except Exception as e:
         print(f"Chat error: {str(e)}")
         return jsonify({'error': str(e)}), 500
 
-def chat_with_gemini(prompt, session_id):
+def chat_with_gemini(prompt, session_id, image_data=None):
     try:
         # Initialize or get existing chat history
         if session_id not in chat_sessions:
@@ -63,18 +66,40 @@ def chat_with_gemini(prompt, session_id):
         # Include entire conversation history instead of just last 3 messages
         for msg in session_history:
             context += f"{msg}\n"
-        context += f"\nUser: {prompt}"
         
-        # Generate response using Gemini
-        response = model.generate_content(context)
+        # Add current prompt
+        user_prompt = f"User: {prompt}"
+        if image_data:
+            user_prompt += " (image attached)"
+        
+        # For history tracking
+        session_history.append(user_prompt)
+        
+        # For multimodal input handling
+        if image_data:
+            # Convert base64 image to bytes
+            try:
+                # Remove data URL prefix if present
+                if "base64," in image_data:
+                    image_data = image_data.split("base64,")[1]
+                
+                image_bytes = base64.b64decode(image_data)
+                
+                # Create multimodal content
+                response = model.generate_content(
+                    [context, user_prompt, {"mime_type": "image/jpeg", "data": image_bytes}]
+                )
+            except Exception as img_error:
+                print(f"Image processing error: {str(img_error)}")
+                return "I couldn't process the image you sent. Please make sure it's a valid image file."
+        else:
+            # Text-only response
+            full_prompt = context + "\n" + user_prompt
+            response = model.generate_content(full_prompt)
         
         # Store the conversation
-        session_history.append(f"User: {prompt}")
         if response and response.text:
             session_history.append(f"Assistant: {response.text.strip()}")
-        
-        # Remove the size limit check to keep all messages
-        # chat_sessions[session_id] = session_history  # Store complete history
         
         # Check if response was generated successfully
         if response and response.text:

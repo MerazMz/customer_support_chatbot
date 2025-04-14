@@ -26,7 +26,7 @@
                     <?php 
                         switch($_GET['error']) {
                             case 'invalid':
-                                echo "Invalid email or password";
+                                echo isset($_GET['admin']) ? "Invalid admin username or password" : "Invalid email or password";
                                 break;
                             case 'server':
                                 echo "Server error occurred. Please try again";
@@ -49,7 +49,7 @@
         </div>
 
         <!-- Login Form -->
-        <form class="space-y-4 sm:space-y-6" action="login_process.php" method="POST">
+        <form class="space-y-4 sm:space-y-6" action="login_process.php" method="POST" id="userLoginForm">
             <!-- Email Input -->
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1 sm:mb-2" for="email">
@@ -115,11 +115,86 @@
             </button>
         </form>
 
+        <!-- Admin Login Form (Hidden by default) -->
+        <form class="space-y-4 sm:space-y-6 hidden" action="admin_login_process.php" method="POST" id="adminLoginForm">
+            <!-- Username Input -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1 sm:mb-2" for="username">
+                    Admin Username
+                </label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username"
+                    class="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm sm:text-base"
+                    placeholder="Enter admin username"
+                    required
+                >
+            </div>
+
+            <!-- Password Input -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1 sm:mb-2" for="admin_password">
+                    Admin Password
+                </label>
+                <div class="relative">
+                    <input 
+                        type="password" 
+                        id="admin_password" 
+                        name="password"
+                        class="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none text-sm sm:text-base pr-10"
+                        placeholder="Enter admin password"
+                        required
+                    >
+                    <button 
+                        type="button"
+                        class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600 cursor-pointer"
+                        onclick="toggleAdminPasswordVisibility()"
+                    >
+                        <i class="fas fa-eye" id="toggleAdminPassword"></i>
+                    </button>
+                </div>
+            </div>
+
+            <script>
+                function toggleAdminPasswordVisibility() {
+                    const passwordInput = document.getElementById('admin_password');
+                    const toggleIcon = document.getElementById('toggleAdminPassword');
+                    
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        toggleIcon.classList.remove('fa-eye');
+                        toggleIcon.classList.add('fa-eye-slash');
+                    } else {
+                        passwordInput.type = 'password';
+                        toggleIcon.classList.remove('fa-eye-slash');
+                        toggleIcon.classList.add('fa-eye');
+                    }
+                }
+            </script>
+
+            <!-- Login Button -->
+            <button 
+                type="submit" 
+                class="w-full bg-[#4c63ce] text-white py-2 sm:py-3 rounded-lg hover:bg-[#3b4fa3] transition-colors duration-300 font-medium text-sm sm:text-base"
+            >
+                Admin Login
+            </button>
+        </form>
+
         <!-- Sign Up Link -->
-        <div class="text-center mt-4 sm:mt-6">
+        <div class="text-center mt-4 sm:mt-6" id="signupLink">
             <p class="text-gray-600 text-sm sm:text-base">
                 Don't have an account? 
                 <a href="signup.php" class="text-blue-600 hover:text-blue-800 font-medium transition-colors">Sign up</a>
+            </p>
+        </div>
+
+        <!-- Back to User Login Link (Hidden by default) -->
+        <div class="text-center mt-4 sm:mt-6 hidden" id="backToUserLink">
+            <p class="text-gray-600 text-sm sm:text-base">
+                Not an admin? 
+                <a href="#" onclick="switchToUserLogin(); return false;" class="text-blue-600 hover:text-blue-800 font-medium transition-colors">Back to User Login</a>
             </p>
         </div>
 
@@ -142,9 +217,56 @@
                     <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="h-4 sm:h-5 w-4 sm:w-5">
                     <span class="ml-2 text-gray-600 font-semibold">Sign in with Google</span>
                 </button>
+                
+                <!-- Admin Login Button -->
+                <button 
+                    type="button"
+                    onclick="switchToAdminLogin()"
+                    class="w-full flex justify-center items-center py-2 px-3 sm:px-4 border border-gray-300 rounded-lg hover:bg-[#eef0f8] transition-colors mt-3">
+                    <i class="fas fa-user-shield text-[#4c63ce] h-4 sm:h-5 w-4 sm:w-5"></i>
+                    <span class="ml-2 text-gray-600 font-semibold">Admin Login</span>
+                </button>
             </div>
 
     </div>
     </div>
+
+    <script>
+        function switchToAdminLogin() {
+            document.getElementById('userLoginForm').classList.add('hidden');
+            document.getElementById('adminLoginForm').classList.remove('hidden');
+            document.getElementById('signupLink').classList.add('hidden');
+            document.getElementById('backToUserLink').classList.remove('hidden');
+            
+            // Change the header text
+            document.querySelector('h1').textContent = 'Admin Login';
+            document.querySelector('p').textContent = 'Please enter your admin credentials';
+        }
+        
+        function switchToUserLogin() {
+            document.getElementById('adminLoginForm').classList.add('hidden');
+            document.getElementById('userLoginForm').classList.remove('hidden');
+            document.getElementById('backToUserLink').classList.add('hidden');
+            document.getElementById('signupLink').classList.remove('hidden');
+            
+            // Change the header text back
+            document.querySelector('h1').textContent = 'Welcome Back';
+            document.querySelector('p').textContent = 'Please sign in to continue';
+        }
+        
+        // Check if we need to show admin login form based on URL parameter
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === '1') {
+                switchToAdminLogin();
+            }
+        };
+        
+        // Firebase authentication would go here
+        function signInWithGoogle() {
+            // Firebase authentication logic
+            alert('Google sign-in would be handled by Firebase');
+        }
+    </script>
 </body>
 </html>

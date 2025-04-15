@@ -44,3 +44,6 @@ A modern, responsive medical center website built with PHP and Tailwind CSS. Thi
 ## Getting Started
 
 1. Clone the repository
+2. Import the sql file in your phpmyadmin
+3. Take the project folder in your "C/xaamp/htdocs/'foldername'"
+4. And you are good to go.

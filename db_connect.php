@@ -1,8 +1,12 @@
+<!-- This PHP script establishes connection to MySQL database using the PDO (PHP Data Objects) extension.
+  -->
+
+
 <?php
-$host = 'localhost';
-$dbname = 'project220';
-$username = 'root';
-$password = '';
+$host = 'localhost'; //Database server's hostname.
+$dbname = 'customer_support_chatbot';//name of the database to connect to.
+$username = 'root';//The username for database authentication.
+$password = '';//the password for database authentication.
 
 // Attempt to establish a connection to the database using PDO
 try {

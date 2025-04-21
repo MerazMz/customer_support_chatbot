@@ -43,7 +43,18 @@
             
             <?php if(isset($_GET['success'])): ?>
                 <div class="mt-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded">
-                    <?php echo "Successfully registered! Please login."; ?>
+                    <?php 
+                        switch($_GET['success']) {
+                            case 'registered':
+                                echo "Successfully registered! Please login.";
+                                break;
+                            case 'password_reset':
+                                echo "Password has been reset successfully! Please login with your new password.";
+                                break;
+                            default:
+                                echo "Successfully registered! Please login.";
+                        }
+                    ?>
                 </div>
             <?php endif; ?>
         </div>
@@ -86,6 +97,9 @@
                     >
                         <i class="fas fa-eye" id="togglePassword"></i>
                     </button>
+                </div>
+                <div class="flex justify-end mt-1">
+                    <a href="forgot_password.php" class="text-sm text-blue-600 hover:text-blue-800">Forgot Password?</a>
                 </div>
             </div>
 

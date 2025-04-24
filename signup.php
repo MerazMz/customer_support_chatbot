@@ -42,6 +42,9 @@
                             case 'password_length':
                                 echo "Password must be at least 6 characters long";
                                 break;
+                            case 'invalid_username':
+                                echo "Username is invalid. Please use letters and spaces only.";
+                                break;
                             default:
                                 echo "An error occurred. Please try again";
                         }

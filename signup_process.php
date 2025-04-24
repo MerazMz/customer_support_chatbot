@@ -4,23 +4,19 @@ require_once 'db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fullname = trim($_POST['fullname']);
-    $username = trim($_POST['username']);
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
     // Basic validation
-    if(empty($fullname) || empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
+    if(empty($fullname) || empty($email) || empty($password) || empty($confirm_password)) {
         header("Location: signup.php?error=empty");
         exit();
     }
-
-    // Username validation
-    if(!preg_match('/^[a-zA-Z0-9_]{3,20}$/', $username)) {
-        header("Location: signup.php?error=invalid_username");
+    if (!preg_match("/^[a-zA-Z\s]+$/", $fullname) || preg_match("/^\d+$/", $fullname)) {
+        header("Location: signup.php?error=invalid_fullname");
         exit();
     }
-
     // Password validation
     if(strlen($password) < 6) {
         header("Location: signup.php?error=password_length");
@@ -34,14 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     try {
-        // Check if username already exists
-        $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
-        $stmt->execute([$username]);
-        if($stmt->rowCount() > 0) {
-            header("Location: signup.php?error=username_exists");
-            exit();
-        }
-
         // Check if email already exists
         $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
         $stmt->execute([$email]);
@@ -54,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         
         // Use explicit column names in the INSERT statement
-        $stmt = $pdo->prepare("INSERT INTO users (fullname, username, email, password) VALUES (?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO users (fullname, email, password) VALUES (?, ?, ?)");
         
         // Execute with error checking
-        if(!$stmt->execute([$fullname, $username, $email, $hashed_password])) {
+        if(!$stmt->execute([$fullname, $email, $hashed_password])) {
             throw new PDOException("Failed to insert user");
         }
 
@@ -72,4 +60,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 }
-?>
+?> 

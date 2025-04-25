@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Password validation
     if(strlen($password) < 6) {
         header("Location: signup.php?error=password_length");
-        exit();
+        exit(); 
     }
 
     // Password match validation

@@ -23,8 +23,8 @@ $services = [
             ['question' => 'Is radiation involved in ultrasound?', 'answer' => 'No, ultrasound uses sound waves, making it safe for pregnancy and other sensitive conditions.']
         ],
         'testimonials' => [
-            ['name' => 'John Doe', 'text' => 'The MRI was quick and comfortable, with clear results explained by the team.'],
-            ['name' => 'Jane Smith', 'text' => 'Ultrasound helped monitor my pregnancy safely. Highly recommend!']
+            ['name' => 'Aditi', 'text' => 'The MRI was quick and comfortable, with clear results explained by the team.'],
+            ['name' => 'Sakshi Sharma', 'text' => 'Ultrasound helped monitor my pregnancy safely. Highly recommend!']
         ]
     ],
     'neurology' => [
@@ -46,8 +46,8 @@ $services = [
             ['question' => 'Can migraines be treated?', 'answer' => 'Yes, our clinics offer personalized treatments, including medications and lifestyle changes, to reduce migraine frequency.']
         ],
         'testimonials' => [
-            ['name' => 'Alice Brown', 'text' => 'The epilepsy management plan changed my life. The team was so supportive!'],
-            ['name' => 'Mark Wilson', 'text' => 'Stroke rehab helped me regain mobility faster than expected.']
+            ['name' => 'Aman Kumar', 'text' => 'The epilepsy management plan changed my life. The team was so supportive!'],
+            ['name' => 'Vijay Verma', 'text' => 'Stroke rehab helped me regain mobility faster than expected.']
         ]
     ],
     'cardiology' => [
@@ -69,8 +69,8 @@ $services = [
             ['question' => 'Is cardiac catheterization safe?', 'answer' => 'Yes, it’s a minimally invasive procedure with low risks, performed by our expert cardiologists.']
         ],
         'testimonials' => [
-            ['name' => 'Sarah Lee', 'text' => 'The heart rhythm monitoring caught my issue early, saving me from complications.'],
-            ['name' => 'Tom Harris', 'text' => 'Cardiac care here is top-notch. I feel stronger every day!']
+            ['name' => 'Vanshika', 'text' => 'The heart rhythm monitoring caught my issue early, saving me from complications.'],
+            ['name' => 'Ravi Dubey', 'text' => 'Cardiac care here is top-notch. I feel stronger every day!']
         ]
     ],
     'orthopedics' => [
@@ -92,8 +92,8 @@ $services = [
             ['question' => 'Can sports injuries be treated without surgery?', 'answer' => 'Yes, many injuries respond well to physical therapy and non-surgical treatments.']
         ],
         'testimonials' => [
-            ['name' => 'Emma Davis', 'text' => 'Knee replacement surgery gave me my mobility back. Amazing care!'],
-            ['name' => 'Liam Carter', 'text' => 'The sports injury team got me back on the field in weeks.']
+            ['name' => 'Arpita', 'text' => 'Knee replacement surgery gave me my mobility back. Amazing care!'],
+            ['name' => 'Lakshay Thakur', 'text' => 'The sports injury team got me back on the field in weeks.']
         ]
     ],
     'ophthalmology' => [
@@ -115,8 +115,8 @@ $services = [
             ['question' => 'How often should children have eye exams?', 'answer' => 'Children should have eye exams every 1-2 years or as recommended by our specialists.']
         ],
         'testimonials' => [
-            ['name' => 'Olivia Green', 'text' => 'Cataract surgery was seamless, and my vision is crystal clear now!'],
-            ['name' => 'Noah White', 'text' => 'LASIK changed my life. No more glasses!']
+            ['name' => 'Sonakshi', 'text' => 'Cataract surgery was seamless, and my vision is crystal clear now!'],
+            ['name' => 'Gaurav Bhatia', 'text' => 'LASIK changed my life. No more glasses!']
         ]
     ]
 ];

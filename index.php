@@ -338,7 +338,7 @@
     <div id="services" class="py-10 relative -mt-24">
         <div class="max-w-5xl mx-auto px-8 py-8">
             <div class="text-center">
-                <h1 class="text-[#4c63ce] font-medium text-base sm:text-lg mb             mb-4">
+                <h1 class="text-[#4c63ce] font-medium text-base sm:text-lg mb-4">
                     <i class="fa-solid fa-stethoscope sm:mt-8 mr-2"></i>
                     Our Services
                 </h1>
